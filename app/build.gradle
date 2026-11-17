@@ -4,14 +4,17 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    // MODIFICADO: el espacio de nombres pasa del AndroidManifest.xml a este fichero (obligatorio desde AGP 8).
+    namespace 'com.example.conexionrealtimedatabase'
+    compileSdk 35   // MODIFICADO: antes 30
 
     defaultConfig {
+        // Se mantiene el identificador original: es el que hay que registrar en la consola de Firebase.
         applicationId "com.example.conexionrealtimedatabase"
         minSdk 26
-        targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        targetSdk 34   // MODIFICADO: antes 30
+        versionCode 2
+        versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -23,16 +26,25 @@ android {
         }
     }
 
+    // NUEVO: Java 8 para poder usar lambdas en los listeners.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
+    // MODIFICADO: versiones actualizadas de AndroidX y Material.
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'   // NUEVO: listado de pacientes
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'com.google.firebase:firebase-database:20.0.2'
+    // MODIFICADO: Firebase con BoM, que fija versiones compatibles entre sí.
+    implementation platform('com.google.firebase:firebase-bom:33.7.0')
+    implementation 'com.google.firebase:firebase-database'
 
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 }

@@ -1,3 +1,61 @@
 <resources>
-    <string name="app_name">Conexion RealTime Database</string>
+    <string name="app_name">Gestión de pacientes</string>
+
+    <!-- Pantalla principal -->
+    <string name="principal_titulo">Gestión de pacientes</string>
+    <string name="principal_subtitulo">Firebase Realtime Database · MIBSD</string>
+    <string name="alta_paciente">Nuevo paciente</string>
+    <string name="paciente_aleatorio">Paciente aleatorio</string>
+    <string name="buscar_titulo">Buscar por NUHSA</string>
+    <string name="hint_nuhsa">NUHSA</string>
+    <string name="buscar_paciente">Buscar paciente</string>
+    <string name="listado_pacientes">Ver listado de pacientes</string>
+
+    <!-- Formulario -->
+    <string name="titulo_alta">Nuevo paciente</string>
+    <string name="titulo_edicion">Editar paciente</string>
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_apellidos">Apellidos</string>
+    <string name="hint_fecha">Fecha de nacimiento (opcional)</string>
+    <string name="etiqueta_grupo">Grupo sanguíneo</string>
+    <string name="borrar_fecha">Borrar la fecha</string>
+    <string name="guardar">Guardar</string>
+
+    <!-- Ficha -->
+    <string name="titulo_ficha">Ficha del paciente</string>
+    <string name="etiqueta_nuhsa">NUHSA</string>
+    <string name="etiqueta_nombre">Nombre</string>
+    <string name="etiqueta_apellidos">Apellidos</string>
+    <string name="etiqueta_fecha">Fecha de nacimiento</string>
+    <string name="sin_fecha">—</string>
+    <string name="editar">Editar</string>
+    <string name="borrar">Borrar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="borrar_titulo">Borrar paciente</string>
+    <string name="borrar_mensaje">¿Seguro que quieres borrar a %1$s (%2$s)? Esta acción no se puede deshacer.</string>
+
+    <!-- Listado -->
+    <string name="titulo_listado">Pacientes</string>
+    <string name="filtro_titulo">Grupo sanguíneo</string>
+    <string name="filtro_todos">Todos</string>
+    <string name="lista_vacia">No hay pacientes que mostrar.</string>
+    <plurals name="contador_pacientes">
+        <item quantity="one">%d paciente</item>
+        <item quantity="other">%d pacientes</item>
+    </plurals>
+
+    <!-- Mensajes -->
+    <string name="paciente_creado">Paciente %1$s creado</string>
+    <string name="paciente_guardado">Paciente guardado</string>
+    <string name="paciente_modificado">Cambios guardados</string>
+    <string name="paciente_borrado">Paciente borrado</string>
+    <string name="paciente_no_encontrado">Paciente no encontrado</string>
+    <string name="paciente_eliminado_otro">El paciente se ha borrado desde otro dispositivo</string>
+    <string name="error_nuhsa">Introduce un NUHSA de 1 a 20 letras o números, sin espacios ni símbolos</string>
+    <string name="error_nuhsa_existe">Ya existe un paciente con este NUHSA</string>
+    <string name="error_nombre">Introduce un nombre válido (solo letras)</string>
+    <string name="error_apellidos">Introduce unos apellidos válidos (solo letras)</string>
+    <string name="error_fecha">La fecha no es válida o es posterior a hoy</string>
+    <string name="error_aleatorio">No se ha encontrado un NUHSA libre; inténtalo de nuevo</string>
+    <string name="error_firebase">Error de Firebase: %1$s</string>
 </resources>

@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -89,6 +91,11 @@ public class ListaPacientesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_pacientes);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        FloatingActionButton fabMenu = findViewById(R.id.fabMenu);
+        if (fabMenu != null) {
+            fabMenu.setOnClickListener(v -> finish());
         }
 
         tvVacio = findViewById(R.id.tvListaVacia);

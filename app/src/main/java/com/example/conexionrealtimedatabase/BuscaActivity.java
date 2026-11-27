@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -62,6 +64,11 @@ public class BuscaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_busca);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        FloatingActionButton fabMenu = findViewById(R.id.fabMenu);
+        if (fabMenu != null) {
+            fabMenu.setOnClickListener(v -> finish());
         }
 
         // Recupero el NUHSA que me pasó la activity anterior

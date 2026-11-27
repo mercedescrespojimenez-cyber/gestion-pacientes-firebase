@@ -45,6 +45,7 @@
     </plurals>
 
     <!-- Mensajes -->
+    <string name="menu_opciones">Menú de opciones</string>
     <string name="paciente_creado">Paciente %1$s creado</string>
     <string name="paciente_guardado">Paciente guardado</string>
     <string name="paciente_modificado">Cambios guardados</string>

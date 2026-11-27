@@ -1,61 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- NUEVO: listado de pacientes con filtro por grupo sanguíneo -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- NUEVO: listado de pacientes con filtro por grupo sanguíneo y botón flotante de menú en la parte inferior -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ListaPacientesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="16dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/filtro_titulo"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
+
+            <Spinner
+                android:id="@+id/spFiltroGrupo"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1" />
+        </LinearLayout>
 
         <TextView
+            android:id="@+id/tvContador"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="@string/filtro_titulo"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
 
-        <Spinner
-            android:id="@+id/spFiltroGrupo"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPacientes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="88dp"
+                tools:listitem="@layout/item_paciente" />
+
+            <TextView
+                android:id="@+id/tvListaVacia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/lista_vacia"
+                android:visibility="gone" />
+        </FrameLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvContador"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="8dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/menu_opciones"
+        app:backgroundTint="@color/white"
+        app:elevation="6dp"
+        app:srcCompat="@drawable/ic_menu"
+        app:tint="?attr/colorOnSurface" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPacientes"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_paciente" />
-
-        <TextView
-            android:id="@+id/tvListaVacia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/lista_vacia"
-            android:visibility="gone" />
-    </FrameLayout>
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

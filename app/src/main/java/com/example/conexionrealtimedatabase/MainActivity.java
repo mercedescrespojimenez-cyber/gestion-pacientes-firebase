@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -49,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         btnBuscar.setOnClickListener(v -> buscaPaciente());
         // NUEVO: listado en tiempo real
         btnListado.setOnClickListener(v -> startActivity(new Intent(this, ListaPacientesActivity.class)));
+
+        FloatingActionButton fabMenu = findViewById(R.id.fabMenu);
+        if (fabMenu != null) {
+            fabMenu.setOnClickListener(v -> Toast.makeText(this, R.string.app_name, Toast.LENGTH_SHORT).show());
+        }
     }
 
     /** MODIFICADO: valida el NUHSA antes de abrir la ficha (el original abría la ficha aunque estuviera vacío). */

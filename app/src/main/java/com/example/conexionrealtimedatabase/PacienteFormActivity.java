@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -61,6 +62,11 @@ public class PacienteFormActivity extends AppCompatActivity {
         spGrupo = findViewById(R.id.spGrupo);
         btnGuardar = findViewById(R.id.btnGuardar);
         progreso = findViewById(R.id.progresoGuardar);
+
+        FloatingActionButton fabMenu = findViewById(R.id.fabMenu);
+        if (fabMenu != null) {
+            fabMenu.setOnClickListener(v -> finish());
+        }
 
         // Spinner con los ocho grupos sanguíneos con sombra al pasar el cursor (hover)
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,

@@ -2,7 +2,10 @@ package com.example.conexionrealtimedatabase;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -59,10 +62,41 @@ public class PacienteFormActivity extends AppCompatActivity {
         btnGuardar = findViewById(R.id.btnGuardar);
         progreso = findViewById(R.id.progresoGuardar);
 
-        // Spinner con los ocho grupos sanguíneos
-        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Constantes.GRUPOS);
-        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Spinner con los ocho grupos sanguíneos con sombra al pasar el cursor (hover)
+        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, Constantes.GRUPOS) {
+            @Override
+            public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
+                View v = super.getDropDownView(position, convertView, parent);
+
+                parent.setClipChildren(false);
+                parent.setClipToPadding(false);
+
+                v.setOnHoverListener((view, event) -> {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_HOVER_ENTER:
+                            view.setHovered(true);
+                            view.animate()
+                                    .translationZ(TypedValue.applyDimension(
+                                            TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()))
+                                    .setDuration(120)
+                                    .start();
+                            break;
+                        case MotionEvent.ACTION_HOVER_EXIT:
+                            view.setHovered(false);
+                            view.animate()
+                                    .translationZ(0)
+                                    .setDuration(120)
+                                    .start();
+                            break;
+                    }
+                    return false;
+                });
+
+                return v;
+            }
+        };
+        adaptador.setDropDownViewResource(R.layout.item_filtro_dropdown);
         spGrupo.setAdapter(adaptador);
 
         // La fecha no se escribe: se elige con el DatePickerDialog

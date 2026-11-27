@@ -2,7 +2,10 @@ package com.example.conexionrealtimedatabase;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -102,13 +105,46 @@ public class ListaPacientesActivity extends AppCompatActivity {
         });
         rv.setAdapter(adaptador);
 
-        // Filtro: «Todos» más los ocho grupos sanguíneos
+        // Filtro: «Todos» más los ocho grupos sanguíneos con efecto de sombra al pasar el cursor (hover)
         String[] opciones = new String[Constantes.GRUPOS.length + 1];
         opciones[0] = getString(R.string.filtro_todos);
         System.arraycopy(Constantes.GRUPOS, 0, opciones, 1, Constantes.GRUPOS.length);
-        ArrayAdapter<String> adaptadorFiltro = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, opciones);
-        adaptadorFiltro.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adaptadorFiltro = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, opciones) {
+            @Override
+            public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
+                View v = super.getDropDownView(position, convertView, parent);
+
+                // Permitir que la sombra no se corte en los bordes del desplegable
+                parent.setClipChildren(false);
+                parent.setClipToPadding(false);
+
+                // Listener para aplicar/quitar la sombra cuando el cursor esté por encima de una opción
+                v.setOnHoverListener((view, event) -> {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_HOVER_ENTER:
+                            view.setHovered(true);
+                            view.animate()
+                                    .translationZ(TypedValue.applyDimension(
+                                            TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()))
+                                    .setDuration(120)
+                                    .start();
+                            break;
+                        case MotionEvent.ACTION_HOVER_EXIT:
+                            view.setHovered(false);
+                            view.animate()
+                                    .translationZ(0)
+                                    .setDuration(120)
+                                    .start();
+                            break;
+                    }
+                    return false;
+                });
+
+                return v;
+            }
+        };
+        adaptadorFiltro.setDropDownViewResource(R.layout.item_filtro_dropdown);
         Spinner spFiltro = findViewById(R.id.spFiltroGrupo);
         spFiltro.setAdapter(adaptadorFiltro);
         spFiltro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

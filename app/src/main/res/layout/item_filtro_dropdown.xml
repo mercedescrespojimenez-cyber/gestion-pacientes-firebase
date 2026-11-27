@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Opción desplegable del filtro por grupo sanguíneo con sombra al pasar el cursor (hover) -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    style="?android:attr/spinnerDropDownItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="6dp"
+    android:layout_marginVertical="3dp"
+    android:padding="12dp"
+    android:ellipsize="marquee"
+    android:singleLine="true"
+    android:background="@drawable/selector_opcion_filtro"
+    android:stateListAnimator="@animator/hover_shadow" />

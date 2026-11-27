@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1012234909374",
+    "firebase_url": "https://gestion-pacientes-mibsd-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "gestion-pacientes-mibsd",
+    "storage_bucket": "gestion-pacientes-mibsd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012234909374:android:228088e02d407b72bd50ef",
+        "android_client_info": {
+          "package_name": "com.example.conexionrealtimedatabase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXRoEioPmGsyNwXRdqyEgt0rxZLCxJYVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
